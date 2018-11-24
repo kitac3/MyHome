@@ -1,8 +1,8 @@
-package hello;
+package Repo;
 
 import org.springframework.data.repository.CrudRepository;
 
-import hello.Table1;
+import Entity.Table1;
 
 // This will be AUTO IMPLEMENTED by Spring into a Bean called userRepository
 // CRUD refers Create, Read, Update, Delete
