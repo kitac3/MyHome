@@ -1,4 +1,4 @@
-package Entity;
+package kitac3.Entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

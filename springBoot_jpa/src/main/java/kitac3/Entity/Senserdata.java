@@ -1,4 +1,4 @@
-package Entity;
+package kitac3.Entity;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;

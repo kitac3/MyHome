@@ -1,8 +1,8 @@
-package Repo;
+package kitac3.Repo;
 
 import org.springframework.data.repository.CrudRepository;
 
-import Entity.Table1;
+import kitac3.Entity.Table1;
 
 // This will be AUTO IMPLEMENTED by Spring into a Bean called userRepository
 // CRUD refers Create, Read, Update, Delete
