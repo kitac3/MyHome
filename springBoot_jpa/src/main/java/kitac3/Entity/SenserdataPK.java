@@ -11,6 +11,7 @@ import lombok.Data;
 @Data
 public class SenserdataPK implements Serializable {
 
+	private static final long serialVersionUID = 7359837140087885419L;
 	@Embedded
 	  String sn_id;
 	  String sn_epid;
