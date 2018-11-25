@@ -4,14 +4,17 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity // This tells Hibernate to make a table out of this class
 @Data
 @Table(name="senserdata")
+@NoArgsConstructor
 public class Senserdata {
 	
     @EmbeddedId
     SenserdataPK pk;
+    
 	  String hes_header_id;
 	  String hes_interface_id;
 	  String hes_command_id;

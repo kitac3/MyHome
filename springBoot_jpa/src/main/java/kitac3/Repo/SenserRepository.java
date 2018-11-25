@@ -15,7 +15,7 @@ import kitac3.Entity.SenserdataPK;
 public interface SenserRepository extends CrudRepository<Senserdata, SenserdataPK> {
 	
 //	@Query("select MEASURE_DATETIME,ANALOG1,ANALOG2 from senserdata s where  %:cond% order by SN_ID,MEASURE_DATETIME")
-	@Query("select s from senserdata s where  :cond order by SN_ID,MEASURE_DATETIME")
+	@Query("select s from senserdata s where  :cond order by sn_id,measure_datetime")
 	public List<Senserdata> findByDate(@Param("cond") String cond);
 
 }
