@@ -1,5 +1,7 @@
 package kitac3.Controller;
 
+import java.sql.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +26,6 @@ public class SenserController {
 	@GetMapping(path="/findByDate")
 	public @ResponseBody Iterable<Senserdata> getDataByDate() {
 		// This returns a JSON or XML with the users
-		return senserRepo.findByDate("MEASURE_DATETIME>'20181101'");
+		return senserRepo.findByDate(new Date(118,9,1));
 	}
 }

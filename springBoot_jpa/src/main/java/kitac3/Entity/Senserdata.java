@@ -2,6 +2,9 @@ package kitac3.Entity;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,11 +12,13 @@ import lombok.NoArgsConstructor;
 @Entity // This tells Hibernate to make a table out of this class
 @Data
 @Table(name="senserdata")
-@NoArgsConstructor
 public class Senserdata {
 	
-    @EmbeddedId
-    SenserdataPK pk;
+//    @EmbeddedId
+//    SenserdataPK pk;
+    
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     
 	  String hes_header_id;
 	  String hes_interface_id;
@@ -29,15 +34,15 @@ public class Senserdata {
 	  int cr_rssi_2;
 	  String cr_reserve;
 	  int sn_packet_length;
-//	  String sn_id;
-//	  String sn_epid;
-//	  String sn_cid;
+	  java.sql.Timestamp measure_datetime;
+	  int measure_sequence;
+	  String sn_id;
+	  String sn_epid;
+	  String sn_cid;
 	  int sn_sequence_no;
 	  String sn_option;
 	  int sn_rssi_1;
 	  int sn_combine_count;
-//	  java.sql.Timestamp measure_datetime;
-//	  int measure_sequence;
 	  float sn_battery_voltage;
 	  float temperature;
 	  float humidity;

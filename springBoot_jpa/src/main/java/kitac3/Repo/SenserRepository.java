@@ -1,5 +1,6 @@
 package kitac3.Repo;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
@@ -12,10 +13,12 @@ import kitac3.Entity.SenserdataPK;
 // This will be AUTO IMPLEMENTED by Spring into a Bean called userRepository
 // CRUD refers Create, Read, Update, Delete
 
-public interface SenserRepository extends CrudRepository<Senserdata, SenserdataPK> {
+public interface SenserRepository extends CrudRepository<Senserdata, Long> {
 	
 //	@Query("select MEASURE_DATETIME,ANALOG1,ANALOG2 from senserdata s where  %:cond% order by SN_ID,MEASURE_DATETIME")
-	@Query("select s from senserdata s where  :cond order by sn_id,measure_datetime")
-	public List<Senserdata> findByDate(@Param("cond") String cond);
+//	@Query("select s from senserdata s where  :cond order by sn_id,measure_datetime")
+	@Query("select s from Senserdata s where  measure_datetime > :cond")
+//	@Query("select s from senserdata s")
+	public List<Senserdata> findByDate(@Param("cond") Date cond);
 
 }
