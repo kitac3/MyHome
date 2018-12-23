@@ -1,6 +1,7 @@
 package kitac3.Entity;
 
 import javax.persistence.EmbeddedId;
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import lombok.Data;
@@ -11,7 +12,9 @@ import lombok.Data;
 public class Senserdata {
 	
     @EmbeddedId
-    SenserdataPK pk;
+    private SenserdataPK pk;
+    
+    
 	  String hes_header_id;
 	  String hes_interface_id;
 	  String hes_command_id;
