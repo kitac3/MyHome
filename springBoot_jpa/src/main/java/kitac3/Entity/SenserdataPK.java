@@ -59,7 +59,8 @@ public class SenserdataPK implements Serializable {
 //		this.sn_epid = sn_epid;
 //		this.sn_id = sn_id;
 //	}
-
+	
+	int measure_sequence;
 	java.sql.Timestamp measure_datetime;
 	String sn_cid;
 	String sn_epid;

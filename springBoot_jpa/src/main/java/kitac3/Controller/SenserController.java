@@ -26,6 +26,6 @@ public class SenserController {
 	@GetMapping(path="/findByDate")
 	public @ResponseBody Iterable<Senserdata> getDataByDate() {
 		// This returns a JSON or XML with the users
-		return senserRepo.findByDate(new Date(118,9,1));
+		return senserRepo.findByDate(new Date(118,4,1));
 	}
 }

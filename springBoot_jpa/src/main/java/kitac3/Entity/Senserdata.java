@@ -14,12 +14,18 @@ import lombok.NoArgsConstructor;
 @Table(name="senserdata")
 public class Senserdata {
 	
-//    @EmbeddedId
-//    SenserdataPK pk;
+    @EmbeddedId
+    SenserdataPK pk;
     
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+//    @Id
+//    @GeneratedValue(strategy=GenerationType.AUTO)
     
+//	  java.sql.Timestamp measure_datetime;
+//	  int measure_sequence;
+//	  String sn_id;
+//	  String sn_epid;
+//	  String sn_cid;
+	  int sn_sequence_no;
 	  String hes_header_id;
 	  String hes_interface_id;
 	  String hes_command_id;
@@ -34,12 +40,6 @@ public class Senserdata {
 	  int cr_rssi_2;
 	  String cr_reserve;
 	  int sn_packet_length;
-	  java.sql.Timestamp measure_datetime;
-	  int measure_sequence;
-	  String sn_id;
-	  String sn_epid;
-	  String sn_cid;
-	  int sn_sequence_no;
 	  String sn_option;
 	  int sn_rssi_1;
 	  int sn_combine_count;
