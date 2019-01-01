@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kitac3.Entity.Senserdata;
@@ -27,6 +26,10 @@ public class SenserController {
 	@GetMapping(path="/findByDate")
 	public @ResponseBody Iterable<Senserdata> getDataByDate() {
 		// This returns a JSON or XML with the users
+<<<<<<< HEAD
 		return senserRepo.findByDate(new Date(118,9,1));
+=======
+		return senserRepo.findByDate(new Date(118,4,1));
+>>>>>>> branch 'master' of https://github.com/kitac3/MyHome
 	}
 }
