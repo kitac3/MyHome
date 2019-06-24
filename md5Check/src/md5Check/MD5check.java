@@ -6,8 +6,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.DirectoryStream;
+import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.PathMatcher;
 import java.nio.file.Paths;
 import java.nio.file.attribute.FileTime;
 import java.security.DigestInputStream;
@@ -21,24 +23,36 @@ public class MD5check {
 		// TODO Auto-generated method stub
 		String target="C:\\Program Files\\Java\\jre1.8.0_191\\lib";
 		String filePattern =  "*.{jar,class}";
-		String target2="/tmp";
-
-		DirectoryStream<Path> ds2 = Files.newDirectoryStream(Paths.get(target2,"*.txt"),getDateCheckFilter(FileTime.from(Instant.now())));
-		for (Path file : ds2) {
-			System.out.println(file.getFileName()+":");
-		}
+		String target2="c:\\";
+		String filePattern2 =  "{*,*.class}";
 		
-		DirectoryStream<Path> ds = Files.newDirectoryStream(Paths.get(target,filePattern));
-//		File dir = new File("C:\\Program Files\\Java\\jre1.8.0_191\\lib");
-//		File[] fileList=dir.listFiles("*.txt");
+		PathMatcher matcher = FileSystems.getDefault().getPathMatcher("glob:*.class");
+
+		FileTime ft=Files.getLastModifiedTime(Paths.get(target2,"tmp/check"));
+		DirectoryStream<Path> ds2 = Files.newDirectoryStream(Paths.get(target2),getDateCheckFilter(ft));
+		for (Path file : ds2) {
+			System.out.println(file.toString());
+		}
+		serachFiles(Paths.get(target2),getFilter(matcher));
+	}
+	
+	static boolean serachFiles(Path path,DirectoryStream.Filter  filter) throws IOException, NoSuchAlgorithmException {
+		try{DirectoryStream<Path> ds = Files.newDirectoryStream(path,filter);
 		for (Path file : ds) {
-//			if(file.isDirectory())
-//				continue;
-			System.out.print(file.getFileName()+":");
+			if(Files.isDirectory(file))
+			{
+				//System.out.println("netxt"+file.toString());
+				serachFiles(file,filter);
+				continue;
+			}
+			System.out.print(file.toString()+":");
 			for (byte b:md5(file))
 			System.out.printf("%02X", b);
 			System.out.println();
 		}
+		}catch(java.nio.file.AccessDeniedException e)
+		{}
+		return true;
 	}
 
 	static byte[] md5(Path f) throws NoSuchAlgorithmException, FileNotFoundException, IOException {
@@ -68,4 +82,14 @@ public class MD5check {
 	};
 	return filter;
 	}
+
+	private static DirectoryStream.Filter getFilter(PathMatcher matcher) {
+	DirectoryStream.Filter<Path> filter = new DirectoryStream.Filter<Path>() {
+	    public boolean accept(Path file) throws IOException {
+	    	return (matcher.matches(file.getFileName()) || Files.isDirectory(file));
+	    }
+	};
+	return filter;
+	}
+
 }
